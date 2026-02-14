@@ -10,4 +10,10 @@ async function createAccountController(req, res) {
   res.status(201).json({ account });
 }
 
-module.exports = { createAccountController };
+async function getUserAccountController(req, res) {
+  const accounts = await Account.find({ user: req.user._id });
+
+  res.status(200).json({ accounts });
+}
+
+module.exports = { createAccountController, getUserAccountController };

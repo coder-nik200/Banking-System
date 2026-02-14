@@ -15,4 +15,15 @@ router.post(
   transactionController.createTransaction,
 );
 
+/*
+1. POST /api/transactions/system/initial-funds
+2. Create initial funds transaction from system user 
+*/
+
+router.post(
+  "/system/initial-funds",
+  authMiddleware.authSystemUserMiddleware,
+  transactionController.createInitialFundsTransaction,
+);
+
 module.exports = router;
